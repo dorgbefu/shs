@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Book Viewer with Search</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #pdf-container {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="searchPdf()">Search</button>
+    <div id="pdf-container">
+        <iframe id="pdfViewer" src="Elective ICT Notes.pdf" width="100%" height="100%"></iframe>
+    </div>
+
+    <script>
+        function searchPdf() {
+            var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            var pdfViewer = document.getElementById('pdfViewer');
+            
+            // Check if the browser supports the 'find' method
+            if (pdfViewer && pdfViewer.contentWindow) {
+                if (pdfViewer.contentWindow.find(searchTerm)) {
+                    pdfViewer.contentWindow.focus();
+                } else {
+                    alert('No matches found');
+                }
+            } else {
+                alert('Your browser does not support searching within the PDF.');
+            }
+        }
+    </script>
+</body>
+</html>
