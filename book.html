@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
     <title>PDF Book Viewer with Search</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
         }
-       #pdf-container {
-    width: 100%;
-    height: 100vh;
-    overflow: auto; /* Enable scrolling if the content is larger than the screen */
-}
-        
+        #pdf-container {
+            width: 100%;
+            height: 100vh;
+            overflow: auto;
+        }
     </style>
 </head>
 <body>
@@ -30,7 +28,6 @@
             var searchTerm = document.getElementById('searchInput').value.toLowerCase();
             var pdfViewer = document.getElementById('pdfViewer');
             
-            // Check if the browser supports the 'find' method
             if (pdfViewer && pdfViewer.contentWindow) {
                 if (pdfViewer.contentWindow.find(searchTerm)) {
                     pdfViewer.contentWindow.focus();
